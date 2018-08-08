@@ -23,6 +23,7 @@ public class UserController {
 
     @RequestMapping("/")
     public String index() {
+
         return "redirect:/list";
     }
 

@@ -1,7 +1,9 @@
 package com.example.thymeleafjpa.service.impl;
 
+import com.example.thymeleafjpa.dao.UserRepository;
 import com.example.thymeleafjpa.domain.User;
 import com.example.thymeleafjpa.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,9 +17,13 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
+    @Autowired
+    private UserRepository userRepository;
+
     @Override
     public List<User> getUserList() {
-        return null;
+        List<User> uList = userRepository.findAll();
+        return uList;
     }
 
     @Override
