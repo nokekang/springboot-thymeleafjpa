@@ -1,156 +1,156 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head> 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-<title>jQuery输入框创建关键词标签代码</title>
-
-<style>
-.tags {
-	background-color: #fff;
-	border: 1px solid #d5d5d5;
-	color: #777;
-	padding: 4px 6px;
-	width: 406px;
-	margin:40px auto;
-}
-.tags:hover {
-	border-color: #f59942;
-	outline: 0 none;
-}
-.tags[class*="span"] {
-	float: none;
-	margin-left: 0;
-}
-.tags input[type="text"], .tags input[type="text"]:focus {
-	border: 0 none;
-	box-shadow: none;
-	display: inline;
-	line-height: 22px;
-	margin: 0;
-	outline: 0 none;
-	padding: 4px 6px; 
-}
-.tags .tag {
-	background-color: #91b8d0;
-	color: #fff;
-	display: inline-block;
-	font-size: 12px;
-	font-weight: normal;
-	margin-bottom: 3px;
-	margin-right: 3px;
-	padding: 4px 22px 5px 9px;
-	position: relative;
-	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
-	transition: all 0.2s ease 0s;
-	vertical-align: baseline;
-	white-space: nowrap;
-}
-.tags .tag .close {
-	bottom: 0;
-	color: #fff;
-	float: none;
-	font-size: 12px;
-	line-height: 20px;
-	opacity: 1;
-	position: absolute;
-	right: 0;
-	text-align: center;
-	text-shadow: none;
-	top: 0;
-	width: 18px;
-}
-.tags .tag .close:hover {
-	background-color: rgba(0, 0, 0, 0.2);
-}
-.close {
-	color: #000;
-	float: right;
-	font-size: 21px;
-	font-weight: bold;
-	line-height: 1;
-	opacity: 0.2;
-	text-shadow: 0 1px 0 #fff;
-}
-.close:hover, .close:focus {
-	color: #000;
-	cursor: pointer;
-	opacity: 0.5;
-	text-decoration: none;
-}
-button.close {
-	background: transparent none repeat scroll 0 0;
-	border: 0 none;
-	cursor: pointer;
-	padding: 0;
-}
-.tags .tag-warning {
-	background-color: #ffb752;
-}
-</style>
-
-</head>
-<body><!--<script src="/demos/googlegg.js"></script>-->
-
-<div class="tags" id="tags" tabindex="1"> 
-	<input id="form-field-tags" type="text" placeholder="请输入标签 ..." value="Tag Input Control" name="tags" style="display: none;">
-	<input type="text" placeholder="请输入标签 ..." class="tags_enter" autocomplete="off">
-</div>
-	
-
-<script type="text/javascript" src="/js/jquery.js"></script>
-<script type="text/javascript">
-$(function() {
-	$(".tags_enter").blur(function() { //焦点失去触发 
-		var txtvalue=$(this).val().trim();
-		if(txtvalue!=''){
-			addTag($(this));
-			$(this).parents(".tags").css({"border-color": "#d5d5d5"})
-		}
-	}).keydown(function(event) {
-		var key_code = event.keyCode;
-		var txtvalue=$(this).val().trim(); 
-		if (key_code == 13&& txtvalue != '') { //enter
-			addTag($(this));
-		}
-		if (key_code == 32 && txtvalue!='') { //space
-			addTag($(this));
-		}
-	});
-	$(".close").live("click", function() {
-		$(this).parent(".tag").remove();
-	});
-	$(".tags").click(function() {
-		$(this).css({"border-color": "#f59942"})
-	}).blur(function() {
-		$(this).css({"border-color": "#d5d5d5"})
-	})
-})
-function addTag(obj) {
-	var tag = obj.val();
-	if (tag != '') {
-		var i = 0;
-		$(".tag").each(function() {
-			if ($(this).text() == tag + "×") {
-				$(this).addClass("tag-warning");
-				setTimeout("removeWarning()", 400);
-				i++;
+	<head> 
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+		<title>jQuery输入框创建关键词标签代码</title>
+		
+		<style>
+			.tags {
+				background-color: #fff;
+				border: 1px solid #d5d5d5;
+				color: #777;
+				padding: 4px 6px;
+				width: 406px;
+				margin:40px auto;
 			}
+			.tags:hover {
+				border-color: #f59942;
+				outline: 0 none;
+			}
+			.tags[class*="span"] {
+				float: none;
+				margin-left: 0;
+			}
+			.tags input[type="text"], .tags input[type="text"]:focus {
+				border: 0 none;
+				box-shadow: none;
+				display: inline;
+				line-height: 22px;
+				margin: 0;
+				outline: 0 none;
+				padding: 4px 6px; 
+			}
+			.tags .tag {
+				background-color: #91b8d0;
+				color: #fff;
+				display: inline-block;
+				font-size: 12px;
+				font-weight: normal;
+				margin-bottom: 3px;
+				margin-right: 3px;
+				padding: 4px 22px 5px 9px;
+				position: relative;
+				text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+				transition: all 0.2s ease 0s;
+				vertical-align: baseline;
+				white-space: nowrap;
+			}
+			.tags .tag .close {
+				bottom: 0;
+				color: #fff;
+				float: none;
+				font-size: 12px;
+				line-height: 20px;
+				opacity: 1;
+				position: absolute;
+				right: 0;
+				text-align: center;
+				text-shadow: none;
+				top: 0;
+				width: 18px;
+			}
+			.tags .tag .close:hover {
+				background-color: rgba(0, 0, 0, 0.2);
+			}
+			.close {
+				color: #000;
+				float: right;
+				font-size: 21px;
+				font-weight: bold;
+				line-height: 1;
+				opacity: 0.2;
+				text-shadow: 0 1px 0 #fff;
+			}
+			.close:hover, .close:focus {
+				color: #000;
+				cursor: pointer;
+				opacity: 0.5;
+				text-decoration: none;
+			}
+			button.close {
+				background: transparent none repeat scroll 0 0;
+				border: 0 none;
+				cursor: pointer;
+				padding: 0;
+			}
+			.tags .tag-warning {
+				background-color: #ffb752;
+			}
+		</style>
+	
+	</head>
+	<body><!--<script src="/demos/googlegg.js"></script>-->
+		
+		<div class="tags" id="tags" tabindex="1"> 
+			<input id="form-field-tags" type="text" placeholder="请输入标签 ..." value="Tag Input Control" name="tags" style="display: none;">
+			<input type="text" placeholder="请输入标签 ..." class="tags_enter" autocomplete="off">
+		</div>
+			
+		
+		<script type="text/javascript" src="/js/jquery.js"></script>
+		<script type="text/javascript">
+		$(function() {
+			$(".tags_enter").blur(function() { //焦点失去触发 
+				var txtvalue=$(this).val().trim();
+				if(txtvalue!=''){
+					addTag($(this));
+					$(this).parents(".tags").css({"border-color": "#d5d5d5"})
+				}
+			}).keydown(function(event) {
+				var key_code = event.keyCode;
+				var txtvalue=$(this).val().trim(); 
+				if (key_code == 13&& txtvalue != '') { //enter
+					addTag($(this));
+				}
+				if (key_code == 32 && txtvalue!='') { //space
+					addTag($(this));
+				}
+			});
+			$(".close").live("click", function() {
+				$(this).parent(".tag").remove();
+			});
+			$(".tags").click(function() {
+				$(this).css({"border-color": "#f59942"})
+			}).blur(function() {
+				$(this).css({"border-color": "#d5d5d5"})
+			})
 		})
-		obj.val('');
-		if (i > 0) { //说明有重复
-			return false;
+		function addTag(obj) {
+			var tag = obj.val();
+			if (tag != '') {
+				var i = 0;
+				$(".tag").each(function() {
+					if ($(this).text() == tag + "×") {
+						$(this).addClass("tag-warning");
+						setTimeout("removeWarning()", 400);
+						i++;
+					}
+				})
+				obj.val('');
+				if (i > 0) { //说明有重复
+					return false;
+				}
+				$("#form-field-tags").before("<span class='tag'>" + tag + "<button class='close' type='button'>×</button></span>"); //添加标签
+			}
 		}
-		$("#form-field-tags").before("<span class='tag'>" + tag + "<button class='close' type='button'>×</button></span>"); //添加标签
-	}
-}
-function removeWarning() {
-	$(".tag-warning").removeClass("tag-warning");
-}
-</script>
-
-<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
-<p>适用浏览器：360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. 不支持IE8及以下浏览器。</p>
-<p>来源：<a href="http://www.lanrenzhijia.com/" target="_blank">懒人素材</a></p>
-</div>
-</body>
+		function removeWarning() {
+			$(".tag-warning").removeClass("tag-warning");
+		}
+		</script>
+		
+		<!--<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+			<p>适用浏览器：360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. 不支持IE8及以下浏览器。</p>
+			<p>来源：<a href="http://www.lanrenzhijia.com/" target="_blank">懒人素材</a></p>
+		</div>-->
+	</body>
 </html>

@@ -5,6 +5,7 @@ import com.example.thymeleafjpa.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -21,9 +22,16 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @ExceptionHandler
+    public String handleException(Exception e) {
+        System.out.println("产生了异常,返回异常页面");
+        e.printStackTrace();
+        return "error2";
+    }
+
     @RequestMapping("/")
     public String index() {
-
+        int a =10/0;
         return "redirect:/list";
     }
 
